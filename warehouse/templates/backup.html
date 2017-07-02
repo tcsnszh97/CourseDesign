@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+<!--<ul>-->
+    <!--<li><a href="{{ url_for('back_show')  }}" class="btn btn-primary"><input  type="button"></input>backup</a></li>-->
+    <!--<li><a href="{{ url_for('cover_show')  }}" class="btn btn-primary"><input  type="button"></input>cover</a></li>-->
+<!--</ul>-->
+    <a href="{{ url_for('back_show')  }}" class="btn btn-primary"><input  type="button"></input>backup</a>
+    <a href="{{ url_for('cover_show')  }}" class="btn btn-primary"><input  type="button"></input>cover</a>
+    <!--<button id="button" onclick="{{ url_for('back_show')  }}"> backup </button>-->
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

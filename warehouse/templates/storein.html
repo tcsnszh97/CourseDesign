@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+    {{ wtf.quick_form(form) }}
+</div>
+
+<div class="headtest">
+    <a>入库单据</a>
+</div>
+
+ <table border="1">
+  <tr>
+    <th>入库产品编号</th>
+    <th>入库产品数量</th>
+    <th>仓库编号</th>
+    <th>经办人</th>
+    <th>入库日期</th>
+  </tr>
+   {% for storeIn in storeIns %}
+      <tr>
+        <td>{{ storeIn.pid }}</td>
+        <td>{{ storeIn.pnum }}</td>
+        <td>{{ storeIn.sid }}</td>
+        <td>{{ storeIn.empname }}</td>
+        <td>{{ storeIn.optdate }}</td>
+      </tr>
+   {% endfor %}
+
+</table>
+    <br>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

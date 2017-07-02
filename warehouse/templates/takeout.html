@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+{#    <h1>{{ pid }}{{ pnum }}{{ sid }}{{ empname }}{{ optdate }}</h1>#}
+{{ wtf.quick_form(form) }}
+</div>
+
+<div class="headtest">
+    <a>出库单据</a>
+</div>
+
+ <table border="1">
+  <tr>
+    <th>出库产品编号</th>
+    <th>出库产品数量</th>
+    <th>仓库编号</th>
+    <th>经办人</th>
+    <th>出库日期</th>
+  </tr>
+   {% for takeout in takeouts %}
+      <tr>
+        <td>{{ takeout.pid }}</td>
+        <td>{{ takeout.pnum }}</td>
+        <td>{{ takeout.sid }}</td>
+        <td>{{ takeout.empname }}</td>
+        <td>{{ takeout.optdate }}</td>
+      </tr>
+   {% endfor %}
+
+</table>
+    <br>
+
+{% endblock %}

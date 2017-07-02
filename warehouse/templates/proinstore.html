@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+{#    <h1>{{ pid }}{{ pnum }}{{ sid }}{{ empname }}{{ optdate }}</h1>#}
+</div>
+
+<div class="headtest">
+    <a>库存产品信息表</a>
+</div>
+
+
+<table border="1">
+  <tr>
+    <th>产品编号</th>
+      <th>产品名称</th>
+      <th>参考价格</th>
+      <th>仓库编号</th>
+      <th>仓库名称</th>
+      <th>仓库地点</th>
+      <th>产品数量</th>
+    <th>库存上限</th>
+    <th>库存下限</th>
+  </tr>
+   {% for proinstore in proinstores %}
+      <tr>
+          <td>{{ proinstore.pid }}</td>
+          <td>{{ proinstore.product.pname }}</td>
+          <td>{{ proinstore.product.pprice }}</td>
+          <td>{{ proinstore.storehouse.sid }}</td>
+          <td>{{ proinstore.storehouse.sname }}</td>
+          <td>{{ proinstore.storehouse.splace }}</td>
+          <td>{{ proinstore.pnum }}
+              {% if proinstore.pnum < proinstore.storelower%}
+                  (库存短缺)
+              {% endif %}
+              {% if proinstore.pnum > proinstore.storeupper%}
+                  (库存过剩)
+              {% endif %}
+          </td>
+          <td>{{ proinstore.storeupper }}</td>
+          <td>{{ proinstore.storelower }}</td>
+      </tr>
+   {% endfor %}
+
+</table>
+    <br>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
